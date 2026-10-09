@@ -39,3 +39,13 @@ common:index_build --noannounce_rc
 common:index_build --noshow_timestamps
 common:index_build --curses=no
 common:index_build --color=no
+
+# Local Swiftgram development settings
+startup --output_user_root=/Volumes/SwiftgramDev/bazel-root
+build --jobs=3
+
+# Xcode 27: keep compiler warnings as warnings
+build --@build_bazel_rules_swift//swift:copt=-no-warnings-as-errors
+
+# Xcode 27: allow deprecated Objective-C APIs during local builds
+build --copt=-Wno-error=deprecated-declarations
